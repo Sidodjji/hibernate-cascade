@@ -1,6 +1,12 @@
 package core.basesyntax.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Message {
@@ -8,8 +14,8 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    @ManyToOne
-    @JoinColumn(name = "message_details_id")
+    @OneToOne
+    @Cascade(CascadeType.ALL)
     private MessageDetails messageDetails;
 
     public Long getId() {

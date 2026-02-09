@@ -1,9 +1,10 @@
 package core.basesyntax.model;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,6 @@ public class Comment {
     private Long id;
     private String content;
     @OneToMany
-    @Cascade(CascadeType.MERGE)
     private List<Smile> smiles;
 
     public Long getId() {
